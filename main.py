@@ -38,7 +38,7 @@ class Config:
         self.document_path = base_path / "corpus.txt"
         self.index_path = base_path / "faiss_index"
         self.embedding_model = "models/embedding-001"
-        self.llm_model = "gemini-1.5-pro"
+        self.llm_model = "gemini-2.0-flash-lite"
         self.llm_temperature = 0.3
         self.search_kwargs = {"k": 3}
         self.chunk_size = 1000
