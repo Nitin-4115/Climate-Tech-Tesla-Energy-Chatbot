@@ -162,18 +162,31 @@ def setup_ui():
 
         html, body, [class*="css"] {
             font-family: 'Orbitron', sans-serif !important;
-            letter-spacing: 0.3px;
+        }
+
+        /* Force font on all markdown/title/header/caption blocks */
+        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
+        .stMarkdown p, .stMarkdown, .stCaption, .stText, .stTitle,
+        .block-container, .main, .stChatMessage {
+            font-family: 'Orbitron', sans-serif !important;
+            letter-spacing: 0.5px;
+        }
+
+        /* Title alignment fix and style */
+        h1 {
+            font-size: 2.4rem !important;
+            font-weight: 600 !important;
+            color: white !important;
+        }
+
+        .stCaption {
+            font-size: 1rem !important;
+            color: #AFAFAF !important;
         }
 
         .stButton>button, .stDownloadButton>button, .stTextInput>div>div>input,
-        .stTextArea textarea, .stSelectbox>div>div, .stFileUploader, .stTextInput input,
-        .stChatInput input, .stChatInput button {
-            font-family: 'Orbitron', sans-serif !important;
-            font-weight: 500 !important;
-            letter-spacing: 0.4px;
-        }
-
-        .stMarkdown, .stCaption, .stChatMessage, .stExpanderHeader {
+        .stTextArea textarea, .stSelectbox>div>div, .stFileUploader, .stChatInput input,
+        .stChatInput button {
             font-family: 'Orbitron', sans-serif !important;
         }
 
@@ -206,8 +219,9 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
-    st.title("⚡ Climate Tech (Tesla Energy) Chatbot")
-    st.caption("Your intelligent assistant for Tesla Energy products and climate policy information")
+    # Use markdown instead of st.title() to enforce font styling
+    st.markdown("<h1>⚡ Climate Tech (Tesla Energy) Chatbot</h1>", unsafe_allow_html=True)
+    st.markdown("<p style='margin-top: -12px;'>Your intelligent assistant for Tesla Energy products and climate policy information</p>", unsafe_allow_html=True)
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
