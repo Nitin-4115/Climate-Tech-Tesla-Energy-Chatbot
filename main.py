@@ -215,9 +215,7 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
-    # Set page config early
-    st.set_page_config(page_title="Climate Tech (Tesla Energy) Chatbot", layout="wide")
-    st.markdown("""
+     st.markdown("""
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
     """, unsafe_allow_html=True)
         
