@@ -217,7 +217,8 @@ def setup_ui():
 
     st.markdown("""
         <div class="multi-title">
-            <h1><span class="emoji">🤖</span> <span class="gradient-text">Climate Tech (Tesla Energy) Chatbot</span></h1>
+            <img src="./assets/logo.png" class="title-logo" alt="Logo">
+            <h1 class="gradient-text">Climate Tech (Tesla Energy) Chatbot</h1>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
     
@@ -227,22 +228,22 @@ def setup_ui():
         .multi-title {
             font-family: 'Manrope', sans-serif;
             margin-bottom: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.3rem;
+        }
+    
+        .multi-title img.title-logo {
+            height: 42px;
+            margin-bottom: -4px;
         }
     
         .multi-title h1 {
             font-size: 2.5rem;
             font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.3rem;
-            flex-wrap: wrap;
-        }
-    
-        .emoji {
-            font-size: 2.3rem;
-            color: white;
-            flex-shrink: 0;
+            margin: 0;
+            padding: 0;
         }
     
         .gradient-text {
@@ -258,7 +259,7 @@ def setup_ui():
             font-size: 1rem;
             color: #AFAFAF;
             font-weight: 400;
-            margin-top: -8px;
+            margin-top: -4px;
         }
         </style>
     """, unsafe_allow_html=True)
