@@ -1,9 +1,10 @@
 [theme]
-primaryColor = "#e82127"  # Tesla Red (for buttons and accents)
-backgroundColor = "#0d0d0d"  # Deep black background
-secondaryBackgroundColor = "#1a1a1a"  # Slight contrast for sidebars/cards
-textColor = "#f2f2f2"  # Soft white for readability
-font = "monospace"  # Sleek, techy feel
+primaryColor = "#00FFF7"                   # Neon teal accent
+backgroundColor = "#0F1117"                # Deep dark background
+secondaryBackgroundColor = "#1F222E"       # Slight contrast for cards/sidebar
+textColor = "#E0E0E0"                      # Light gray text for readability
+font = "sans serif"                        # Required by Streamlit (Orbitron is loaded via CSS)
+
 
 [server]
 enableCORS = false
