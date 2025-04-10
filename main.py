@@ -228,12 +228,6 @@ def setup_ui():
                 margin-bottom: 10px;
             }
     
-            .header-logo img {
-                height: 60px;
-                width: auto;
-                border-radius: 10px;
-            }
-    
             .header-title {
                 font-family: 'Manrope', sans-serif;
                 font-size: 42px;
@@ -251,17 +245,17 @@ def setup_ui():
                 color: #ddd;
             }
         </style>
-    
-        <div class="header-container">
-            <div class="header-logo">
-                <img src="assets/logo.png" alt="Logo" />
-            </div>
-            <div>
-                <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
-                <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
-            </div>
-        </div>
     """, unsafe_allow_html=True)
+    
+    # Use columns to align image with text
+    col1, col2 = st.columns([1, 8])
+    with col1:
+        st.image(logo_path, width=60)
+    with col2:
+        st.markdown("""
+            <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
+            <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
+        """, unsafe_allow_html=True)
 
 
     if "messages" not in st.session_state:
