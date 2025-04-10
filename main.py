@@ -215,49 +215,53 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
-    # 👇 Add this before the markdown to show the logo
-    st.image("assets/logo.png", width=48)
-    
-    # 👇 Then the styled title below it
     st.markdown("""
+    <div class="header-wrapper">
+        <img src="assets/logo.png" class="logo" alt="Logo">
         <div class="multi-title">
             <h1 class="gradient-text">Climate Tech (Tesla Energy) Chatbot</h1>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
+    </div>
     
-        <style>
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
     
-        .multi-title {
-            font-family: 'Manrope', sans-serif;
-            margin-bottom: 1.5rem;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 0.3rem;
-        }
+    .header-wrapper {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        font-family: 'Manrope', sans-serif;
+    }
     
-        .multi-title h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(90deg, #FF5ACD, #00FFF7);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-            display: inline-block;
-        }
+    .logo {
+        height: 48px;
+        width: auto;
+        border-radius: 8px;
+        image-rendering: auto;
+    }
     
-        .glow-subtitle {
-            font-size: 1rem;
-            color: #AFAFAF;
-            font-weight: 400;
-            margin-top: -4px;
-        }
-        </style>
+    .multi-title h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0;
+        background: linear-gradient(90deg, #FF5ACD, #00FFF7);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-fill-color: transparent;
+    }
+    
+    .glow-subtitle {
+        font-size: 1rem;
+        color: #AFAFAF;
+        font-weight: 400;
+        margin-top: -4px;
+    }
+    </style>
     """, unsafe_allow_html=True)
+
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
