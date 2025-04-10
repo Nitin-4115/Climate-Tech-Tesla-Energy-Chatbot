@@ -216,8 +216,51 @@ def setup_ui():
     """, unsafe_allow_html=True)
 
     # Header content
-    st.markdown("<h1>⚡ Climate Tech (Tesla Energy) Chatbot</h1>", unsafe_allow_html=True)
-    st.markdown("<p style='margin-top: -12px;'>Your intelligent assistant for Tesla Energy products and climate policy information</p>", unsafe_allow_html=True)
+    st.markdown("""
+        <div class="glow-container">
+            <h1 class="glow-title">🛰️ Tesla Energy Chatbot</h1>
+            <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
+        </div>
+    
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+    
+        .glow-container {
+            background: rgba(15, 17, 23, 0.5); /* glassy background */
+            border: 1px solid rgba(0, 255, 247, 0.2);
+            backdrop-filter: blur(12px);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+    
+        .glow-title {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 700;
+            font-size: 2.6rem;
+            color: #00FFF7;
+            text-shadow: 0 0 10px #00FFF7, 0 0 20px #00FFF7;
+            animation: glow-pulse 2.5s infinite alternate;
+            margin-bottom: 0.25rem;
+        }
+    
+        .glow-subtitle {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1rem;
+            color: #AFAFAF;
+            margin-top: -5px;
+        }
+    
+        @keyframes glow-pulse {
+            0% {
+                text-shadow: 0 0 5px #00FFF7, 0 0 10px #00FFF7, 0 0 20px #00FFF7;
+            }
+            100% {
+                text-shadow: 0 0 10px #00FFF7, 0 0 25px #00FFF7, 0 0 40px #00FFF7;
+            }
+        }
+        </style>
+    """, unsafe_allow_html=True)
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
