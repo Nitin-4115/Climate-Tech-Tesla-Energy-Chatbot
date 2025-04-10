@@ -154,7 +154,7 @@ def display_sources(source_documents: List[Document]):
             st.divider()
 
 def setup_ui():
-    st.set_page_config(page_title="Tesla Energy Chatbot", page_icon="./assets/logo.png", layout="wide")
+    st.set_page_config(page_title="Climate Tech (Tesla Energy) Chatbot", page_icon="./assets/logo.png", layout="wide")
 
     st.markdown("""
         <style>
@@ -240,15 +240,15 @@ def setup_ui():
         .multi-title .emoji {
             font-size: 2.3rem;
             color: white;
-            filter: none; /* no glow on emoji */
+            filter: none;
         }
     
         .gradient-text {
-            background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
-            background-size: 300% 300%;
+            background: linear-gradient(270deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
+            background-size: 600% 600%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-flow 5s ease infinite;
+            animation: gradient-scroll 8s linear infinite;
         }
     
         .glow-subtitle {
@@ -258,20 +258,12 @@ def setup_ui():
             font-weight: 400;
         }
     
-        @keyframes gradient-flow {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+        @keyframes gradient-scroll {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
         </style>
     """, unsafe_allow_html=True)
-
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
