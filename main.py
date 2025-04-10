@@ -246,7 +246,7 @@ def setup_ui():
         }
     
         .gradient-text {
-            background: linear-gradient(90deg, #39FF14, #FF5ACD, #00FFF7);
+            background: linear-gradient(90deg, #FF5ACD, #00FFF7);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
