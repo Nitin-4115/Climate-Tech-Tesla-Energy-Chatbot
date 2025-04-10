@@ -236,19 +236,23 @@ def setup_ui():
             align-items: center;
             gap: 0.6rem;
             margin-bottom: 0.3rem;
+            white-space: nowrap;
+            overflow: hidden;
         }
     
         .emoji {
             font-size: 2.3rem;
             color: white;
+            flex-shrink: 0;
         }
     
         .gradient-text {
-            background: linear-gradient(270deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
-            background-size: 300% 300%;
+            background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
+            background-size: 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-flow 6s linear infinite;
+            animation: scroll-gradient 10s linear infinite;
+            display: inline-block;
         }
     
         .glow-subtitle {
@@ -258,13 +262,12 @@ def setup_ui():
             margin-top: -8px;
         }
     
-        @keyframes gradient-flow {
+        @keyframes scroll-gradient {
             0%   { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
         </style>
     """, unsafe_allow_html=True)
-
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
