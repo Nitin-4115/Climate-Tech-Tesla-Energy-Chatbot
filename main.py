@@ -171,32 +171,27 @@ def setup_ui():
     # Custom HTML and CSS for layout and style
     st.markdown(f"""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
-
-    html, body, [class*="css"], .stApp {{
-        font-family: 'Manrope', sans-serif !important;
-    }}
-
     .header-container {{
         display: flex;
         align-items: center;
         gap: 20px;
         margin-bottom: 20px;
     }}
-
+    
     .header-logo {{
         width: 80px;
         height: 80px;
-        border-radius: 14px;
+        border-radius: 16px;
         object-fit: cover;
+        margin-top: 5px;  /* ✅ This is good */
     }}
-
+    
     .header-text {{
         display: flex;
         flex-direction: column;
         justify-content: center;
     }}
-
+    
     .header-title {{
         font-size: 42px;
         font-weight: 800;
@@ -205,51 +200,14 @@ def setup_ui():
         -webkit-text-fill-color: transparent;
         margin: 0;
     }}
-
+    
     .header-subtitle {{
         font-size: 18px;
         margin-top: 4px;
         color: #ddd;
     }}
-
-    .stMarkdown p, .stText, .stChatMessageContent, .stChatMessage {{
-        font-size: 1rem !important;
-        color: #E0E0E0;
-    }}
-
-    [data-testid="stChatInput"] textarea {{
-        font-size: 1rem !important;
-        color: white !important;
-        background-color: #1F222E;
-        border-radius: 8px;
-    }}
-
-    [data-testid="stChatInput"] button {{
-        background-color: #00FFF7;
-        color: black;
-        border-radius: 6px;
-    }}
-
-    .stSidebar [data-testid="stFileUploaderDropzone"] {{
-        background-color: #1F222E;
-        border-radius: 10px;
-        border: 1px dashed #00FFF7;
-    }}
     </style>
-
-    <div class="header-container">
-        <img src="{logo_data_url}" class="header-logo" />
-        <div class="header-text">
-            <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
-            <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
-        </div>
-    </div>
     """, unsafe_allow_html=True)
-
-    # Initialize message state
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-        st.session_state.first_run = True
 
 
 def sidebar_controls():
