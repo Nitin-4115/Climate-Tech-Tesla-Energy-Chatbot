@@ -215,52 +215,63 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
-    # Header content
     st.markdown("""
-        <div class="glow-container">
-            <h1 class="glow-title">🛰️ Tesla Energy Chatbot</h1>
+        <div class="multi-title">
+            <h1><span class="emoji">🤖</span> <span class="gradient-text">Climate Tech (Tesla Energy) Chatbot</span></h1>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
     
         <style>
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
     
-        .glow-container {
-            background: rgba(15, 17, 23, 0.5); /* glassy background */
-            border: 1px solid rgba(0, 255, 247, 0.2);
-            backdrop-filter: blur(12px);
-            padding: 1.5rem;
-            border-radius: 12px;
+        .multi-title {
+            font-family: 'Manrope', sans-serif;
             margin-bottom: 1rem;
         }
     
-        .glow-title {
-            font-family: 'Manrope', sans-serif;
+        .multi-title h1 {
+            font-size: 2.4rem;
             font-weight: 700;
-            font-size: 2.6rem;
-            color: #00FFF7;
-            text-shadow: 0 0 10px #00FFF7, 0 0 20px #00FFF7;
-            animation: glow-pulse 2.5s infinite alternate;
-            margin-bottom: 0.25rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+    
+        .multi-title .emoji {
+            font-size: 2.3rem;
+            color: white;
+            filter: none; /* no glow on emoji */
+        }
+    
+        .gradient-text {
+            background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient-flow 5s ease infinite;
         }
     
         .glow-subtitle {
-            font-family: 'Manrope', sans-serif;
             font-size: 1rem;
             color: #AFAFAF;
-            margin-top: -5px;
+            margin-top: 0.25rem;
+            font-weight: 400;
         }
     
-        @keyframes glow-pulse {
+        @keyframes gradient-flow {
             0% {
-                text-shadow: 0 0 5px #00FFF7, 0 0 10px #00FFF7, 0 0 20px #00FFF7;
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
             }
             100% {
-                text-shadow: 0 0 10px #00FFF7, 0 0 25px #00FFF7, 0 0 40px #00FFF7;
+                background-position: 0% 50%;
             }
         }
         </style>
     """, unsafe_allow_html=True)
+
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
