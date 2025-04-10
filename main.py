@@ -156,70 +156,11 @@ def display_sources(source_documents: List[Document]):
 def setup_ui():
     st.set_page_config(page_title="Climate Tech (Tesla Energy) Chatbot", page_icon="./assets/logo.png", layout="wide")
 
-    st.markdown("""
-        <style>
-        /* Import Manrope font */
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
-
-        html, body, [class*="css"], .stApp {
-            font-family: 'Manrope', sans-serif !important;
-        }
-
-        /* Title */
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Manrope', sans-serif !important;
-            font-weight: 700 !important;
-            color: white !important;
-        }
-
-        /* Markdown paragraphs and chat text */
-        .stMarkdown p, .stText, .stChatMessageContent, .stChatMessage {
-            font-family: 'Manrope', sans-serif !important;
-            font-size: 1rem !important;
-            color: #E0E0E0;
-        }
-
-        /* Chat input box */
-        [data-testid="stChatInput"] textarea {
-            font-family: 'Manrope', sans-serif !important;
-            font-size: 1rem !important;
-            color: white !important;
-            background-color: #1F222E;
-            border-radius: 8px;
-        }
-
-        [data-testid="stChatInput"] button {
-            font-family: 'Manrope', sans-serif !important;
-            background-color: #00FFF7;
-            color: black;
-            border-radius: 6px;
-        }
-
-        /* Sidebar */
-        .stSidebar, .stSidebar p, .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4 {
-            font-family: 'Manrope', sans-serif !important;
-        }
-
-        .stSidebar [data-testid="stFileUploaderDropzone"] {
-            background-color: #1F222E;
-            border-radius: 10px;
-            border: 1px dashed #00FFF7;
-        }
-
-        /* General input fields and buttons */
-        .stButton>button, .stDownloadButton>button,
-        .stTextInput>div>div>input, .stTextArea textarea, .stSelectbox>div>div {
-            font-family: 'Manrope', sans-serif !important;
-        }
-
-        </style>
-    """, unsafe_allow_html=True)
+    # ✅ Safe path resolution
+    logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo.png")
 
     st.markdown("""
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    """, unsafe_allow_html=True)
-        
-    st.markdown("""
         <style>
             .header-container {
                 display: flex;
@@ -227,17 +168,15 @@ def setup_ui():
                 gap: 20px;
                 margin-bottom: 10px;
             }
-    
             .header-title {
                 font-family: 'Manrope', sans-serif;
                 font-size: 42px;
                 font-weight: 800;
-                background: linear-gradient(to right, #ff66cc, #66ffff);
+                background: linear-gradient(to right, #ff66cc, #00ffff);
                 -webkit-background-clip: text;
                 -webkit-text-fill-color: transparent;
                 margin: 0;
             }
-    
             .header-subtitle {
                 font-family: 'Manrope', sans-serif;
                 font-size: 18px;
@@ -246,8 +185,8 @@ def setup_ui():
             }
         </style>
     """, unsafe_allow_html=True)
-    
-    # Use columns to align image with text
+
+    # ✅ Logo + title layout
     col1, col2 = st.columns([1, 8])
     with col1:
         st.image(logo_path, width=60)
@@ -256,11 +195,6 @@ def setup_ui():
             <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
             <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         """, unsafe_allow_html=True)
-
-
-    if "messages" not in st.session_state:
-        st.session_state.messages = []
-        st.session_state.first_run = True
 
 def sidebar_controls():
     with st.sidebar:
