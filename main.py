@@ -161,46 +161,42 @@ def setup_ui():
         /* Import Manrope font */
         @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
 
-        html, body, [class*="css"] {
+        html, body, [class*="css"], .stApp {
             font-family: 'Manrope', sans-serif !important;
         }
 
-        /* Title Styling */
-        h1 {
-            font-size: 2.4rem !important;
+        /* Title */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Manrope', sans-serif !important;
             font-weight: 700 !important;
             color: white !important;
         }
 
-        /* Subtitle Styling */
-        .stMarkdown p, .stCaption {
-            font-size: 1rem !important;
-            color: #AFAFAF !important;
-        }
-
-        /* Chat Input Box */
-        .stChatInput {
-            background-color: #1F222E;
-            border-radius: 10px;
-            padding: 8px;
-        }
-
-        .stChatInput input {
-            color: white;
-            background-color: transparent;
+        /* Markdown paragraphs and chat text */
+        .stMarkdown p, .stText, .stChatMessageContent, .stChatMessage {
             font-family: 'Manrope', sans-serif !important;
+            font-size: 1rem !important;
+            color: #E0E0E0;
         }
 
-        .stChatInput button {
+        /* Chat input box */
+        [data-testid="stChatInput"] textarea {
+            font-family: 'Manrope', sans-serif !important;
+            font-size: 1rem !important;
+            color: white !important;
+            background-color: #1F222E;
+            border-radius: 8px;
+        }
+
+        [data-testid="stChatInput"] button {
+            font-family: 'Manrope', sans-serif !important;
             background-color: #00FFF7;
             color: black;
             border-radius: 6px;
-            font-family: 'Manrope', sans-serif !important;
         }
 
         /* Sidebar */
-        .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4,
-        .stSidebar p, .stSidebar {
+        .stSidebar, .stSidebar p, .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4 {
             font-family: 'Manrope', sans-serif !important;
         }
 
@@ -210,16 +206,16 @@ def setup_ui():
             border: 1px dashed #00FFF7;
         }
 
-        /* Inputs + Buttons */
-        .stButton>button, .stDownloadButton>button, .stTextInput>div>div>input,
-        .stTextArea textarea, .stSelectbox>div>div {
+        /* General input fields and buttons */
+        .stButton>button, .stDownloadButton>button,
+        .stTextInput>div>div>input, .stTextArea textarea, .stSelectbox>div>div {
             font-family: 'Manrope', sans-serif !important;
         }
 
         </style>
     """, unsafe_allow_html=True)
 
-    # Header
+    # Header content
     st.markdown("<h1>⚡ Climate Tech (Tesla Energy) Chatbot</h1>", unsafe_allow_html=True)
     st.markdown("<p style='margin-top: -12px;'>Your intelligent assistant for Tesla Energy products and climate policy information</p>", unsafe_allow_html=True)
 
