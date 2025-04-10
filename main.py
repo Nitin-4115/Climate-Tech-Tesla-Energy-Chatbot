@@ -217,7 +217,13 @@ def setup_ui():
 
     st.markdown("""
         <div class="multi-title">
-            <h1><span class="emoji">🤖</span> <span class="gradient-text">Climate Tech (Tesla Energy) Chatbot</span></h1>
+            <div class="title-wrapper">
+                <span class="emoji">🤖</span>
+                <div class="scrolling-text">
+                    <span>Climate Tech (Tesla Energy) Chatbot</span>
+                    <span>Climate Tech (Tesla Energy) Chatbot</span> <!-- duplicate for seamless loop -->
+                </div>
+            </div>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
     
@@ -229,42 +235,50 @@ def setup_ui():
             margin-bottom: 1.5rem;
         }
     
-        .multi-title h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
+        .title-wrapper {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 0.3rem;
-            white-space: nowrap;
             overflow: hidden;
+            white-space: nowrap;
         }
     
         .emoji {
             font-size: 2.3rem;
             color: white;
+            margin-right: 0.8rem;
             flex-shrink: 0;
         }
     
-        .gradient-text {
+        .scrolling-text {
+            display: flex;
+            animation: scroll-loop 12s linear infinite;
+        }
+    
+        .scrolling-text span {
+            font-size: 2.4rem;
+            font-weight: 700;
+            padding-right: 3rem;
             background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
             background-size: 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: scroll-gradient 10s linear infinite;
-            display: inline-block;
+            white-space: nowrap;
+        }
+    
+        @keyframes scroll-loop {
+            0% {
+                transform: translateX(0%);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
         }
     
         .glow-subtitle {
             font-size: 1rem;
             color: #AFAFAF;
             font-weight: 400;
-            margin-top: -8px;
-        }
-    
-        @keyframes scroll-gradient {
-            0%   { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
+            margin-top: 0.3rem;
         }
         </style>
     """, unsafe_allow_html=True)
