@@ -215,53 +215,40 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
+    # Set page config early
+    st.set_page_config(page_title="Climate Tech (Tesla Energy) Chatbot", layout="wide")
     st.markdown("""
-    <div class="header-wrapper">
-        <img src="assets/logo.png" class="logo" alt="Logo">
-        <div class="multi-title">
-            <h1 class="gradient-text">Climate Tech (Tesla Energy) Chatbot</h1>
-            <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
-        </div>
-    </div>
-    
-    <style>
-    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
-    
-    .header-wrapper {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-        font-family: 'Manrope', sans-serif;
-    }
-    
-    .logo {
-        height: 48px;
-        width: auto;
-        border-radius: 8px;
-        image-rendering: auto;
-    }
-    
-    .multi-title h1 {
-        font-size: 2.5rem;
-        font-weight: 700;
-        margin: 0;
-        background: linear-gradient(90deg, #FF5ACD, #00FFF7);
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        text-fill-color: transparent;
-    }
-    
-    .glow-subtitle {
-        font-size: 1rem;
-        color: #AFAFAF;
-        font-weight: 400;
-        margin-top: -4px;
-    }
-    </style>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
     """, unsafe_allow_html=True)
-
+        
+    # Custom CSS
+    st.markdown("""
+        <style>
+        .title-text {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.8em;
+            font-weight: 800;
+            background: linear-gradient(to right, #ff66cc, #00ffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            padding-top: 0.4em;
+        }
+        .subtext {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.1em;
+            color: #ccc;
+            margin-top: -10px;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+    
+    # Logo and title in columns
+    col1, col2 = st.columns([0.07, 0.93])
+    with col1:
+        st.image("assets/logo.png", width=48)
+    with col2:
+        st.markdown('<div class="title-text">Climate Tech (Tesla Energy) Chatbot</div>', unsafe_allow_html=True)
+        st.markdown('<div class="subtext">Your intelligent assistant for Tesla Energy products and climate policy</div>', unsafe_allow_html=True)
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
