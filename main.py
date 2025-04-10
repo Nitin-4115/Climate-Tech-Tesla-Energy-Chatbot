@@ -21,6 +21,16 @@ if not GEMINI_API_KEY:
     st.error("🚫 Gemini API key is missing. Please set it in your .env file.")
     st.stop()
 
+# Maintenance Mode Check (via Streamlit Secret)
+APP_ONLINE = st.secrets.get("APP_ONLINE", "false").lower() == "true"
+
+if not APP_ONLINE:
+    st.set_page_config(page_title="Chatbot Offline", page_icon="💤")
+    st.image("https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Old_computer_terminal_icon.svg/240px-Old_computer_terminal_icon.svg.png", width=120)
+    st.markdown("## 🛠️ The Climate Tech Chatbot is currently under maintenance.")
+    st.info("This app is temporarily offline. Please check back later. 🚧")
+    st.stop()
+
 # Configuration
 class Config:
     def __init__(self):
