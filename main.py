@@ -189,7 +189,6 @@ def setup_ui():
         height: 80px;
         border-radius: 14px;
         object-fit: cover;
-        margin-top: 5px;
     }}
 
     .header-text {{
