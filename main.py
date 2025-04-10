@@ -160,55 +160,68 @@ def setup_ui():
         layout="wide"
     )
 
-    # Embed the logo as base64 to avoid path issues
-    import base64
-    logo_path = "./assets/logo.png"
+    import base64, os
+
+    logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo.png")
     with open(logo_path, "rb") as f:
         logo_data = f.read()
     logo_base64 = base64.b64encode(logo_data).decode("utf-8")
     logo_data_url = f"data:image/png;base64,{logo_base64}"
 
-    # Custom HTML and CSS for layout and style
     st.markdown(f"""
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
+
     .header-container {{
         display: flex;
         align-items: center;
         gap: 20px;
-        margin-bottom: 20px;
+        margin-bottom: 24px;
     }}
-    
+
     .header-logo {{
-        width: 80px;
-        height: 80px;
-        border-radius: 16px;
+        width: 72px;
+        height: 72px;
+        border-radius: 12px;
         object-fit: cover;
-        margin-top: 5px;  /* ✅ This is good */
     }}
-    
+
     .header-text {{
         display: flex;
         flex-direction: column;
         justify-content: center;
     }}
-    
+
     .header-title {{
-        font-size: 42px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 2.5rem;
         font-weight: 800;
-        background: linear-gradient(to right, #ff66cc, #66ffff);
+        background: linear-gradient(to right, #ff66cc, #00ffff);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin: 0;
     }}
-    
+
     .header-subtitle {{
-        font-size: 18px;
+        font-family: 'Manrope', sans-serif;
+        font-size: 1rem;
+        color: #ccc;
         margin-top: 4px;
-        color: #ddd;
     }}
     </style>
+
+    <div class="header-container">
+        <img src="{logo_data_url}" class="header-logo" />
+        <div class="header-text">
+            <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
+            <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
+        </div>
+    </div>
     """, unsafe_allow_html=True)
 
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+        st.session_state.first_run = True
 
 def sidebar_controls():
     with st.sidebar:
