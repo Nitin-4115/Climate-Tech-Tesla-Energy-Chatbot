@@ -217,13 +217,7 @@ def setup_ui():
 
     st.markdown("""
         <div class="multi-title">
-            <div class="title-wrapper">
-                <span class="emoji">🤖</span>
-                <div class="scrolling-text">
-                    <span>Climate Tech (Tesla Energy) Chatbot</span>
-                    <span>Climate Tech (Tesla Energy) Chatbot</span> <!-- duplicate for seamless loop -->
-                </div>
-            </div>
+            <h1><span class="emoji">🤖</span> <span class="gradient-text">Climate Tech (Tesla Energy) Chatbot</span></h1>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
     
@@ -235,42 +229,40 @@ def setup_ui():
             margin-bottom: 1.5rem;
         }
     
-        .title-wrapper {
+        .multi-title h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
-            overflow: hidden;
-            white-space: nowrap;
+            gap: 0.6rem;
+            margin-bottom: 0.3rem;
+            flex-wrap: wrap;
         }
     
         .emoji {
             font-size: 2.3rem;
             color: white;
-            margin-right: 0.8rem;
             flex-shrink: 0;
         }
     
-        .scrolling-text {
-            display: flex;
-            animation: scroll-loop 12s linear infinite;
-        }
-    
-        .scrolling-text span {
-            font-size: 2.4rem;
-            font-weight: 700;
-            padding-right: 3rem;
+        .gradient-text {
             background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
-            background-size: 400%;
+            background-size: 200% auto;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            white-space: nowrap;
+            animation: animate-gradient 6s ease-in-out infinite;
+            display: inline-block;
         }
     
-        @keyframes scroll-loop {
+        @keyframes animate-gradient {
             0% {
-                transform: translateX(0%);
+                background-position: 0% center;
+            }
+            50% {
+                background-position: 100% center;
             }
             100% {
-                transform: translateX(-50%);
+                background-position: 0% center;
             }
         }
     
@@ -278,7 +270,7 @@ def setup_ui():
             font-size: 1rem;
             color: #AFAFAF;
             font-weight: 400;
-            margin-top: 0.3rem;
+            margin-top: -8px;
         }
         </style>
     """, unsafe_allow_html=True)
