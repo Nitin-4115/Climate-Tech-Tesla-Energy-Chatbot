@@ -246,24 +246,12 @@ def setup_ui():
         }
     
         .gradient-text {
-            background: linear-gradient(90deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
-            background-size: 200% auto;
+            background: linear-gradient(90deg, #39FF14, #FF5ACD, #00FFF7);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: animate-gradient 6s ease-in-out infinite;
+            text-fill-color: transparent;
             display: inline-block;
-        }
-    
-        @keyframes animate-gradient {
-            0% {
-                background-position: 0% center;
-            }
-            50% {
-                background-position: 100% center;
-            }
-            100% {
-                background-position: 0% center;
-            }
         }
     
         .glow-subtitle {
