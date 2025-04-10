@@ -158,31 +158,27 @@ def setup_ui():
 
     st.markdown("""
         <style>
+        /* Import Manrope font */
+        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap');
+
         html, body, [class*="css"] {
-            font-family: 'Trebuchet MS', sans-serif !important;
+            font-family: 'Manrope', sans-serif !important;
         }
 
-        /* Apply font to all text-based elements */
-        .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
-        .stMarkdown p, .stMarkdown, .stCaption, .stText, .stTitle,
-        .block-container, .main, .stChatMessage {
-            font-family: 'Trebuchet MS', sans-serif !important;
-        }
-
-        /* Title styling */
+        /* Title Styling */
         h1 {
             font-size: 2.4rem !important;
             font-weight: 700 !important;
             color: white !important;
         }
 
-        /* Subtitle styling */
-        .stCaption, .stMarkdown p {
+        /* Subtitle Styling */
+        .stMarkdown p, .stCaption {
             font-size: 1rem !important;
             color: #AFAFAF !important;
         }
 
-        /* Chat input and button */
+        /* Chat Input Box */
         .stChatInput {
             background-color: #1F222E;
             border-radius: 10px;
@@ -192,20 +188,20 @@ def setup_ui():
         .stChatInput input {
             color: white;
             background-color: transparent;
-            font-family: 'Trebuchet MS', sans-serif !important;
+            font-family: 'Manrope', sans-serif !important;
         }
 
         .stChatInput button {
             background-color: #00FFF7;
             color: black;
             border-radius: 6px;
-            font-family: 'Trebuchet MS', sans-serif !important;
+            font-family: 'Manrope', sans-serif !important;
         }
 
-        /* Sidebar styling */
+        /* Sidebar */
         .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4,
         .stSidebar p, .stSidebar {
-            font-family: 'Trebuchet MS', sans-serif !important;
+            font-family: 'Manrope', sans-serif !important;
         }
 
         .stSidebar [data-testid="stFileUploaderDropzone"] {
@@ -214,18 +210,19 @@ def setup_ui():
             border: 1px dashed #00FFF7;
         }
 
+        /* Inputs + Buttons */
         .stButton>button, .stDownloadButton>button, .stTextInput>div>div>input,
         .stTextArea textarea, .stSelectbox>div>div {
-            font-family: 'Trebuchet MS', sans-serif !important;
+            font-family: 'Manrope', sans-serif !important;
         }
+
         </style>
     """, unsafe_allow_html=True)
 
-    # Replace st.title with markdown for full control
+    # Header
     st.markdown("<h1>⚡ Climate Tech (Tesla Energy) Chatbot</h1>", unsafe_allow_html=True)
     st.markdown("<p style='margin-top: -12px;'>Your intelligent assistant for Tesla Energy products and climate policy information</p>", unsafe_allow_html=True)
 
-    # Chat history setup
     if "messages" not in st.session_state:
         st.session_state.messages = []
         st.session_state.first_run = True
