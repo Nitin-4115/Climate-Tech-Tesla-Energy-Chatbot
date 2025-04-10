@@ -215,9 +215,12 @@ def setup_ui():
         </style>
     """, unsafe_allow_html=True)
 
+    # 👇 Add this before the markdown to show the logo
+    st.image("assets/logo.png", width=48)
+    
+    # 👇 Then the styled title below it
     st.markdown("""
         <div class="multi-title">
-            <img src="./assets/logo.png" class="title-logo" alt="Logo">
             <h1 class="gradient-text">Climate Tech (Tesla Energy) Chatbot</h1>
             <p class="glow-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
         </div>
@@ -234,19 +237,11 @@ def setup_ui():
             gap: 0.3rem;
         }
     
-        .multi-title img.title-logo {
-            height: 42px;
-            margin-bottom: -4px;
-        }
-    
         .multi-title h1 {
             font-size: 2.5rem;
             font-weight: 700;
             margin: 0;
             padding: 0;
-        }
-    
-        .gradient-text {
             background: linear-gradient(90deg, #FF5ACD, #00FFF7);
             background-clip: text;
             -webkit-background-clip: text;
