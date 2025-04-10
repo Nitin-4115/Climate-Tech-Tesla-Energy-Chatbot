@@ -154,47 +154,103 @@ def display_sources(source_documents: List[Document]):
             st.divider()
 
 def setup_ui():
-    st.set_page_config(page_title="Climate Tech (Tesla Energy) Chatbot", page_icon="./assets/logo.png", layout="wide")
+    st.set_page_config(
+        page_title="Climate Tech (Tesla Energy) Chatbot",
+        page_icon="./assets/logo.png",
+        layout="wide"
+    )
 
-    # ✅ Safe path resolution
-    logo_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "logo.png")
+    # Embed the logo as base64 to avoid path issues
+    import base64
+    logo_path = "./assets/logo.png"
+    with open(logo_path, "rb") as f:
+        logo_data = f.read()
+    logo_base64 = base64.b64encode(logo_data).decode("utf-8")
+    logo_data_url = f"data:image/png;base64,{logo_base64}"
 
-    st.markdown("""
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-        <style>
-            .header-container {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-                margin-bottom: 10px;
-            }
-            .header-title {
-                font-family: 'Manrope', sans-serif;
-                font-size: 42px;
-                font-weight: 800;
-                background: linear-gradient(to right, #ff66cc, #00ffff);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                margin: 0;
-            }
-            .header-subtitle {
-                font-family: 'Manrope', sans-serif;
-                font-size: 18px;
-                margin-top: 4px;
-                color: #ddd;
-            }
-        </style>
-    """, unsafe_allow_html=True)
+    # Custom HTML and CSS for layout and style
+    st.markdown(f"""
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap');
 
-    # ✅ Logo + title layout
-    col1, col2 = st.columns([1, 8])
-    with col1:
-        st.image(logo_path, width=60)
-    with col2:
-        st.markdown("""
+    html, body, [class*="css"], .stApp {{
+        font-family: 'Manrope', sans-serif !important;
+    }}
+
+    .header-container {{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        margin-bottom: 20px;
+    }}
+
+    .header-logo {{
+        width: 60px;
+        height: 60px;
+        border-radius: 12px;
+        object-fit: cover;
+    }}
+
+    .header-text {{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }}
+
+    .header-title {{
+        font-size: 42px;
+        font-weight: 800;
+        background: linear-gradient(to right, #ff66cc, #66ffff);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin: 0;
+    }}
+
+    .header-subtitle {{
+        font-size: 18px;
+        margin-top: 4px;
+        color: #ddd;
+    }}
+
+    .stMarkdown p, .stText, .stChatMessageContent, .stChatMessage {{
+        font-size: 1rem !important;
+        color: #E0E0E0;
+    }}
+
+    [data-testid="stChatInput"] textarea {{
+        font-size: 1rem !important;
+        color: white !important;
+        background-color: #1F222E;
+        border-radius: 8px;
+    }}
+
+    [data-testid="stChatInput"] button {{
+        background-color: #00FFF7;
+        color: black;
+        border-radius: 6px;
+    }}
+
+    .stSidebar [data-testid="stFileUploaderDropzone"] {{
+        background-color: #1F222E;
+        border-radius: 10px;
+        border: 1px dashed #00FFF7;
+    }}
+    </style>
+
+    <div class="header-container">
+        <img src="{logo_data_url}" class="header-logo" />
+        <div class="header-text">
             <h1 class="header-title">Climate Tech (Tesla Energy) Chatbot</h1>
             <p class="header-subtitle">Your intelligent assistant for Tesla Energy products and climate policy</p>
-        """, unsafe_allow_html=True)
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
+
+    # Initialize message state
+    if "messages" not in st.session_state:
+        st.session_state.messages = []
+        st.session_state.first_run = True
+
 
 def sidebar_controls():
     with st.sidebar:
