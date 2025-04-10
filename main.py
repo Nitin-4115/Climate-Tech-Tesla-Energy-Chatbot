@@ -158,38 +158,31 @@ def setup_ui():
 
     st.markdown("""
         <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
-
         html, body, [class*="css"] {
-            font-family: 'Orbitron', sans-serif !important;
+            font-family: 'Trebuchet MS', sans-serif !important;
         }
 
-        /* Force font on all markdown/title/header/caption blocks */
+        /* Apply font to all text-based elements */
         .stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4,
         .stMarkdown p, .stMarkdown, .stCaption, .stText, .stTitle,
         .block-container, .main, .stChatMessage {
-            font-family: 'Orbitron', sans-serif !important;
-            letter-spacing: 0.5px;
+            font-family: 'Trebuchet MS', sans-serif !important;
         }
 
-        /* Title alignment fix and style */
+        /* Title styling */
         h1 {
             font-size: 2.4rem !important;
-            font-weight: 600 !important;
+            font-weight: 700 !important;
             color: white !important;
         }
 
-        .stCaption {
+        /* Subtitle styling */
+        .stCaption, .stMarkdown p {
             font-size: 1rem !important;
             color: #AFAFAF !important;
         }
 
-        .stButton>button, .stDownloadButton>button, .stTextInput>div>div>input,
-        .stTextArea textarea, .stSelectbox>div>div, .stFileUploader, .stChatInput input,
-        .stChatInput button {
-            font-family: 'Orbitron', sans-serif !important;
-        }
-
+        /* Chat input and button */
         .stChatInput {
             background-color: #1F222E;
             border-radius: 10px;
@@ -199,12 +192,20 @@ def setup_ui():
         .stChatInput input {
             color: white;
             background-color: transparent;
+            font-family: 'Trebuchet MS', sans-serif !important;
         }
 
         .stChatInput button {
             background-color: #00FFF7;
             color: black;
             border-radius: 6px;
+            font-family: 'Trebuchet MS', sans-serif !important;
+        }
+
+        /* Sidebar styling */
+        .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4,
+        .stSidebar p, .stSidebar {
+            font-family: 'Trebuchet MS', sans-serif !important;
         }
 
         .stSidebar [data-testid="stFileUploaderDropzone"] {
@@ -213,16 +214,18 @@ def setup_ui():
             border: 1px dashed #00FFF7;
         }
 
-        .stSidebar h1, .stSidebar h2, .stSidebar h3, .stSidebar h4 {
-            font-family: 'Orbitron', sans-serif !important;
+        .stButton>button, .stDownloadButton>button, .stTextInput>div>div>input,
+        .stTextArea textarea, .stSelectbox>div>div {
+            font-family: 'Trebuchet MS', sans-serif !important;
         }
         </style>
     """, unsafe_allow_html=True)
 
-    # Use markdown instead of st.title() to enforce font styling
+    # Replace st.title with markdown for full control
     st.markdown("<h1>⚡ Climate Tech (Tesla Energy) Chatbot</h1>", unsafe_allow_html=True)
     st.markdown("<p style='margin-top: -12px;'>Your intelligent assistant for Tesla Energy products and climate policy information</p>", unsafe_allow_html=True)
 
+    # Chat history setup
     if "messages" not in st.session_state:
         st.session_state.messages = []
         st.session_state.first_run = True
