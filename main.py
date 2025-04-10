@@ -226,44 +226,45 @@ def setup_ui():
     
         .multi-title {
             font-family: 'Manrope', sans-serif;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
     
         .multi-title h1 {
-            font-size: 2.4rem;
+            font-size: 2.5rem;
             font-weight: 700;
             display: flex;
             align-items: center;
             gap: 0.6rem;
+            margin-bottom: 0.3rem;
         }
     
-        .multi-title .emoji {
+        .emoji {
             font-size: 2.3rem;
             color: white;
-            filter: none;
         }
     
         .gradient-text {
             background: linear-gradient(270deg, #00FFF7, #39FF14, #FF5ACD, #00FFF7);
-            background-size: 600% 600%;
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: gradient-scroll 8s linear infinite;
+            animation: gradient-flow 6s linear infinite;
         }
     
         .glow-subtitle {
             font-size: 1rem;
             color: #AFAFAF;
-            margin-top: 0.25rem;
             font-weight: 400;
+            margin-top: -8px;
         }
     
-        @keyframes gradient-scroll {
-            0% { background-position: 0% 50%; }
+        @keyframes gradient-flow {
+            0%   { background-position: 0% 50%; }
             100% { background-position: 100% 50%; }
         }
         </style>
     """, unsafe_allow_html=True)
+
 
     if "messages" not in st.session_state:
         st.session_state.messages = []
