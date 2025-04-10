@@ -26,7 +26,7 @@ APP_ONLINE = st.secrets.get("APP_ONLINE", "false").lower() == "true"
 
 if not APP_ONLINE:
     st.set_page_config(page_title="Chatbot Offline", page_icon="💤")
-    st.image("https://static.vecteezy.com/system/resources/thumbnails/017/178/563/small/cross-check-icon-symbol-on-transparent-background-free-png.png", width=120)
+    st.image("./assets.error icon.png", width=120)
     st.markdown("## 🛠️ The Climate Tech Chatbot is currently under maintenance.")
     st.info("This app is temporarily offline. Please check back later. 🚧")
     st.stop()
@@ -154,7 +154,7 @@ def display_sources(source_documents: List[Document]):
             st.divider()
 
 def setup_ui():
-    st.set_page_config(page_title="Tesla Energy Chatbot", page_icon="⚡", layout="wide")
+    st.set_page_config(page_title="Tesla Energy Chatbot", page_icon="./assets/logo.png", layout="wide")
     st.title("⚡ Climate Tech (Tesla Energy) Chatbot")
     st.caption("Your intelligent assistant for Tesla Energy products and climate policy information")
     if "messages" not in st.session_state:
