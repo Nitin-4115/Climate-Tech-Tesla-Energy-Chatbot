@@ -26,7 +26,7 @@ APP_ONLINE = st.secrets.get("APP_ONLINE", "false").lower() == "true"
 
 if not APP_ONLINE:
     st.set_page_config(page_title="Chatbot Offline", page_icon="💤")
-    st.image("./assets.error icon.png", width=120)
+    st.image("./assets.error_icon.png", width=120)
     st.markdown("## 🛠️ The Climate Tech Chatbot is currently under maintenance.")
     st.info("This app is temporarily offline. Please check back later. 🚧")
     st.stop()
