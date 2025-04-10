@@ -180,9 +180,9 @@ def setup_ui():
     }}
 
     .header-logo {{
-        width: 80px;
-        height: 80px;
-        border-radius: 14px;
+        width: 85px;
+        height: 85px;
+        border-radius: 15px;
         object-fit: cover;
         transform: translateY(6px);
 
