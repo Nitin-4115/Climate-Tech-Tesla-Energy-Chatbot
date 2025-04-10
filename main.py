@@ -155,6 +155,64 @@ def display_sources(source_documents: List[Document]):
 
 def setup_ui():
     st.set_page_config(page_title="Tesla Energy Chatbot", page_icon="./assets/logo.png", layout="wide")
+
+    # Inject Orbitron font and Tesla-style theme
+    st.markdown("""
+        <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+
+        html, body, [class*="css"]  {
+            font-family: 'Orbitron', sans-serif !important;
+            background-color: #0f1117 !important;
+            color: #E0E0E0 !important;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            color: #00FFF7;
+            letter-spacing: 1px;
+        }
+
+        .stButton>button {
+            background-color: #141927;
+            color: #00FFF7;
+            border: 1px solid #00FFF7;
+            border-radius: 8px;
+            padding: 0.5rem 1.1rem;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .stButton>button:hover {
+            background-color: #00FFF7;
+            color: #141927;
+            transform: scale(1.05);
+        }
+
+        .stChatMessage {
+            background-color: #1f222e;
+            border-left: 4px solid #00FFF7;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 10px;
+        }
+
+        .stTextInput>div>input {
+            background-color: #1f222e;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+            border-radius: 6px;
+            padding: 0.4rem 0.6rem;
+        }
+
+        .stMarkdown p {
+            font-size: 1.05rem;
+            line-height: 1.6;
+        }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("⚡ Climate Tech (Tesla Energy) Chatbot")
     st.caption("Your intelligent assistant for Tesla Energy products and climate policy information")
     if "messages" not in st.session_state:
@@ -204,7 +262,7 @@ def sidebar_controls():
         **About this chatbot:**
         - Answers questions about Tesla Energy products
         - Provides climate policy information
-        - Uses Gemini 1.5 Pro AI model
+        - Uses Gemini 2.0 Flash Lite model
 
         **Tips:**
         - Ask about Solar Panels, Powerwall, or Megapack
